@@ -34,9 +34,13 @@ class MainActivity : AppCompatActivity() {
             val entry = repo.getAnEntry(randomNumber)
 
             withContext(Dispatchers.Main) { // run in the foreground (UI Thread)
-                //myText.text = "Found ${allEntries?.data?.creatures?.food?.size} and entry called ${entry?.data?.name}"
-                name.text = "${entry?.data?.name}"
+
+                // Name
+                name.text = "${entry?.data?.name}".uppercase()
+
+                // Description
                 description.text = "${entry?.data?.description}"
+                // Image
                 Glide.with(this@MainActivity).load("${entry?.data?.image}").into(image)
             }
         }
